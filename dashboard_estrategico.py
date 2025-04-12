@@ -3,18 +3,24 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.set_page_config(page_title="Dashboard Estratégico", layout="wide")
+st.set_page_config(page_title="Dashboard Estratégico de Cobranza", layout="wide")
 
 st.title("📊 Dashboard Estratégico de Cobranza")
 
-# Cargar datos
 uploaded_file = st.file_uploader("Sube el archivo Excel de pagos", type=["xlsx"])
 if uploaded_file:
     df = pd.read_excel(uploaded_file)
 
     st.success("Archivo cargado correctamente.")
 
-    # KPIs básicos
+    # Renombrar columnas si existen
+    df = df.rename(columns={
+        "MONTO DE PAGO PROMETIDO": "MONTO PROMETIDO",
+        "MONTO DE PAGO": "MONTO PAGADO",
+        "AGENTE DE COBRANZA": "AGENTE"
+    })
+
+    # Asegurar que columnas clave estén presentes
     total_prometido = df["MONTO PROMETIDO"].sum() if "MONTO PROMETIDO" in df.columns else 0
     total_pagado = df["MONTO PAGADO"].sum() if "MONTO PAGADO" in df.columns else 0
     tasa_cumplimiento = (total_pagado / total_prometido) * 100 if total_prometido > 0 else 0
