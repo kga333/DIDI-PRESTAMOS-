@@ -1,42 +1,29 @@
+# 📊 Dashboard de Cobranza - Versión Completa para Render
 
-# 📊 Dashboard Estratégico de Cobranza
+Este proyecto contiene el dashboard `main.py` que se ejecuta con Streamlit y se despliega en Render. Ya incluye:
 
-Este proyecto es un dashboard interactivo creado con **Streamlit** para visualizar datos de cobranza desde un archivo Excel. Puedes desplegarlo localmente o en Render para monitorear:
+- KPIs completos
+- Filtros por fecha, agente y fila de cobranza
+- Cálculos de DSO, RR, ACP, LPR, NSR, entre otros
+- Gráficas interactivas con Altair
 
-- Monto prometido vs monto pagado
-- Tasa de cumplimiento
-- KPIs de desempeño por agente
-- Gráficas interactivas
+## Estructura
 
-## 🧾 Archivos incluidos
-
-- `dashboard_estrategico.py`: código principal de la app en Streamlit
-- `requirements.txt`: librerías necesarias para el entorno
-- `Historial_Pagos_Prestamos.xlsx`: ejemplo de archivo Excel para prueba
-
-## 🚀 Cómo desplegar en Render
-
-1. Haz clic en **New Web Service**
-2. Conecta tu cuenta de GitHub y selecciona este repositorio
-3. Usa la siguiente configuración:
-
-- **Build Command**:  
-  `pip install -r requirements.txt`
-
-- **Start Command**:  
-  `streamlit run dashboard_estrategico.py --server.port=10000`
-
-- **Runtime**: Python 3.10+
-
-¡Render se encargará del resto!
-
-## 🛠️ Cómo correr localmente
-
-```bash
-pip install -r requirements.txt
-streamlit run dashboard_estrategico.py
+```
+📁 DIDI_PRESTAMOS_DASHBOARD_RENDER/
+│
+├── main.py
+├── requirements.txt
+├── README.md
+├── 📁 utils/
+│   └── kpi_calculations.py
+├── 📁 data/
+│   └── Historial_Pagos_Prestamos.xlsx  ← Debes subirlo tú manualmente
 ```
 
----
+## Cómo desplegar en Render
 
-© Proyecto educativo – creado con ❤️ por kga333
+1. Sube esta carpeta a un repositorio en GitHub
+2. En Render:
+   - **Build command:** `pip install -r requirements.txt`
+   - **Start command:** `streamlit run main.py --server.port=10000`

@@ -1,0 +1,1 @@
+Este archivo debe contener el Excel 'Historial_Pagos_Prestamos.xlsx' que tú usas en local.
